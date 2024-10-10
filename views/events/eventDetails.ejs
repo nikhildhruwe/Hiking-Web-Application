@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs')%>
+<main class="event-details">
+    <div class="event-header">
+      <h2><%= event.title %></h2>
+    </div>
+      <div class="rsvp-section">
+        <div class="rsvp-container">
+          <h5 class="rsvp-question">Going?</h5>
+          <form action="/events/<%= event.id %>/rsvp" method="post">
+            <button type="submit" name="status" value="YES" class="rsvp-button yes">Yes</button>
+            <button type="submit" name="status" value="NO" class="rsvp-button no">No</button>
+            <button type="submit" name="status" value="MAYBE" class="rsvp-button maybe">Maybe</button>
+          </form>
+        </div>
+      </div>
+  </div>
+  <div class="event-body">
+    <img
+      src="<%= event.image %>"
+      alt="Trekking Event"
+      class="event-image"
+    />
+    <div class="event-info">
+      <p><strong>Host:</strong> <%= event.hostName.firstName + ' ' + event.hostName.lastName %></p>
+      <p><strong>Start Date and Time:</strong> <%= event.startDateTime %></p>
+      <p><strong>End Date and Time:</strong> <%= event.endDateTime %></p>
+      <p><strong>Location:</strong> <%= event.location %></p>
+      <p><strong>Details:</strong> <%= event.details %></p>
+      <p><strong>Number of rsvps:</strong> <%= rsvpCount %></p>
+    </div>
+  </div>
+</main>
+<%- include('../partials/footer.ejs')%>

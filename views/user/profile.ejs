@@ -1,0 +1,70 @@
+<%- include('../partials/header.ejs')%>
+<!-- <h2>Welcome, <%=user.firstName%></h2> -->
+
+<div class="events-container profile-page">
+    <%if(events.length > 0){%>
+        <h2>My Events</h2>
+    <table class="events-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+     
+      <tbody>
+        <%events.forEach(event =>{%>
+        <tr>
+          <td><a class="nav-link login-button" href="/events/<%= event.id%>"><%= event.title%></a></td>
+          <td>
+            <form>
+                <button type="submit" formmethod="GET" formaction = "/events/<%= event.id%>/edit" class="edit-delete-button">
+                    <img src="../images/edit.png" alt="Edit Event" class="edit-icon" />
+                </button>
+    
+                <button type="submit" formmethod="POST" formaction = "/events/<%= event.id%>?_method=DELETE" class="edit-delete-button">
+                <img src="../images/delete.jpg" alt="Delete Event" class="delete-icon" />
+          </td>
+        </tr>
+        <%}) %>
+    </tbody>
+</table>
+            
+    <% }else {%>
+        <h6>You have not created any events</h6>
+        <%}%>
+      
+</div>
+
+<div class="events-container profile-page">
+  <%if(rsvpEvents.length > 0){%>
+      <h2>My RSVP's</h2>
+  <table class="events-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Going?</th>
+      </tr>
+    </thead>
+   
+    <tbody>
+      <%rsvpEvents.forEach(rsvpEvent =>{%>
+      <tr>
+        <td><a class="nav-link login-button" href="/events/<%= rsvpEvent.event.id %>"><%= rsvpEvent.event.title %></a></td>
+        <td>
+          <p><%= rsvpEvent.status%></p>
+        </td>
+      </tr>
+      <%}) %>
+  </tbody>
+</table>
+          
+  <% }else {%>
+      <h6>You have no RSVP's</h6>
+      <%}%>
+    
+</div>
+
+</div>
+
+<%- include('../partials/footer.ejs')%>

@@ -1,0 +1,18 @@
+<%- include ('../partials/header.ejs') %>
+<main class="main-content">
+  <div id="events">
+    <% if(events.length > 0) { %>
+      <% const categories = [...new Set(events.map(event => event.category))].sort() %>
+        <% categories.forEach(category => { %>
+          <h3><%= category %></h3>
+          <ul>
+          <% events.filter(event => event.category === category).forEach(event => { %>
+            <li><a href="/events/<%= event.id %>"><%= event.title %></a></li>
+            <% }) %>
+          </ul>
+          <% }) %>
+    <% } else {%> 
+      <h3>There are no events to display. Please come back again !!</h3>
+      <% }%>
+</main>
+<%- include ('../partials/footer.ejs') %>

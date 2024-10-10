@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs')%>
+    <form action="/users" method="POST" class="signup-form">
+        <label for="firstName">First Name</label><br>
+        <input type="text" id="firstName" name="firstName" class="form-control" required><br>
+        <label for="lastName">Last Name</label><br>
+        <input type="text" id="lastName" name="lastName" class="form-control" required><br>
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" class="form-control" required><br>
+        <label for="password">Password</label><br>
+        <input type="password" id="password" name="password" class="form-control" required><br>
+        <div class="form-group">
+            <input type="submit" value="Sign Up" class="submit-button" />
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer.ejs')%>

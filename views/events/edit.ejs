@@ -1,0 +1,120 @@
+<%- include ('../partials/header.ejs') %>
+
+<main class="main-content mt-4">
+    <form method = "POST" action = "/events/<%= event._id %>?_method=PUT" enctype="multipart/form-data">
+        <div class="row mt-4">
+            <div class="col-sm-1"></div>
+            <label class="col-sm-1">Category</label>
+            <div class="col-sm-10">
+              <select name="category" id="category" class="form-control dropdown" value= "<%= event.category %>" required>
+                <option value="">--Select a category--</option>
+                <option value="Local Treks" <%= event.category === 'Local Treks' ? 'selected' : '' %>>Local Treks</option>
+                <option value="Adventure Series" <%= event.category === 'Adventure Series' ? 'selected' : '' %>>Adventure Series</option>
+                <option value="International Expeditions" <%= event.category === 'International Expeditions' ? 'selected' : '' %>>International Expeditions</option>
+                <option value="Tips And Techniques" <%= event.category === 'Tips And Techniques' ? 'selected' : '' %>>Tips And Techniques</option>
+                <option value="Others" <%= event.category === 'Others' ? 'selected' : '' %>>Others</option>
+              </select>
+            </div>
+        </div>
+        <div class="row mt-4">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-1">Title</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            name="title"
+            placeholder="title"
+            class="form-control"
+            value = "<%= event.title%>"
+            required
+          />
+        </div>
+      </div>
+  
+      <!-- <div class="row mt-4">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-1">Host</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            name="hostName"
+            placeholder="hostName"
+            class="form-control"
+            value = "<%= event.hostName %>"
+            required
+          />
+        </div>
+      </div> -->
+  
+      <div class="row mt-4">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-1">Details</label>
+        <div class="col-sm-10">
+          <textarea
+            name="details"
+            placeholder="description"
+            required
+            class="form-control"
+            rows="2"
+          ><%= event.details %></textarea>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-1">Where</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            name="location"
+            placeholder="location"
+            value = "<%= event.location %>"
+            required
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-1">Start</label>
+        <div class="col-sm-10">
+          <input
+            type="datetime-local"
+            name="startDateTime"
+            class="form-control"
+            value = "<%= event.startDateTime %>"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-1">End</label>
+        <div class="col-sm-10">
+          <input
+            type="datetime-local"
+            name="endDateTime"
+            class="form-control"
+            value = "<%= event.endDateTime %>"
+            required
+          />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm-1"></div>
+        <label class="col-sm-1">Image</label>
+        <div class="col-sm-10">
+          <input type="file" name="image" class="form-control" />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+          <input type="submit" value="Submit" class="submit-button" />
+        </div>
+      </div>
+  
+      <div class="row mt-4"></div>
+    </form>
+</main>
+
+<%- include ('../partials/footer.ejs') %>
